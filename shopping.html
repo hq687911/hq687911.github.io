@@ -16,7 +16,7 @@ function add(){
    }
    
    var title = document.getElementById('title');
-   title.innerHTML = title.innerHTML + '\r\n' + myNewTitle;
+   title.innerHTML = title.innerHTML + "<br>" + myNewTitle;
     return;
 }
 
@@ -27,15 +27,15 @@ function rmv(){
         return;
     }
     var title = document.getElementById('title');
-    var title_s = title.innerHTML.split('\n');
+    var title_s = title.innerHTML.split('<br>');
     for(var i = 1; i < title_s.length; ++i){
         if (title_s[i] == rm_item){
-            title_s[i] = ' '
+            title_s[i] = ' ';
         }
     }
     title.innerHTML = 'Shopping List\n'
     for (var i = 1; i < title_s.length; ++i){
-        title.innerHTML = title.innerHTML + '\n' + title_s[i]
+        if (title_s[i] != ' ') title.innerHTML = title.innerHTML + '<br>' + title_s[i];
     }
 }
 
