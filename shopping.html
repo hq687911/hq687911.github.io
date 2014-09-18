@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<h1 id="title">Shopping List</h1>
+<input type="text" id="myTextField"/>
+<input type="submit" id="byBtn" value="Add" onclick="add()"/>
+<input type="submit" id="rmBtn" value="Remove" onclick="rmv()"/>
+
+<script>
+function add(){
+    
+   var myNewTitle = document.getElementById('myTextField').value;
+   if( myNewTitle.length==0 ){
+       alert('Please enter an item to be added.');
+   return;
+   }
+   
+   var title = document.getElementById('title');
+   title.innerHTML = title.innerHTML + '\r\n' + myNewTitle;
+    return;
+}
+
+function rmv(){
+    var rm_item = document.getElementById('myTextField').value;
+    if (rm_item.length==0){
+        alert("Please enter an item to be removed .");
+        return;
+    }
+    var title = document.getElementById('title');
+    var title_s = title.innerHTML.split('\n');
+    for(var i = 1; i < title_s.length; ++i){
+        if (title_s[i] == rm_item){
+            title_s[i] = ' '
+        }
+    }
+    title.innerHTML = 'Shopping List\n'
+    for (var i = 1; i < title_s.length; ++i){
+        title.innerHTML = title.innerHTML + '\n' + title_s[i]
+    }
+}
+
+</script>
+</html>
