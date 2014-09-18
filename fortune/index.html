@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<h1 id="title">Magic Eight Ball<br></h1>
+<h2>What would you like to know?</h2>
+<input type="text" id="myTextField"/>
+<input type="submit" id="byBtn" value="Ask Your Question" onclick="ask()"/>
+<h2 id="fortune"></h2>
+<script>
+
+function ask(){
+	var fort = Math.floor(Math.random() * 4);
+	var fortune = document.getElementById('fortune');
+	if (fort == 1){
+		fortune.innerHTML = "It's not fated";
+	}
+	else if (fort == 2){
+		fortune.innerHTML = "Highly Probable";
+	}
+	else if (fort == 3){
+		fortune.innerHTML = "You're better off focusing your efforts elsewhere";
+	}
+	else if (fort == 4){
+		fortune.innerHTML = "You can bet on it!";
+	}
+	else{
+		fortune.innerHTML = "My vision is cloudy";
+	}
+	return;
+}
+</script>
+</html>
