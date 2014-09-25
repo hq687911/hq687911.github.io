@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shopping List</title>
 
-<h1 id="title">Shopping List</h1>
-<input type="text" id="myTextField"/>
-<input type="submit" id="byBtn" value="Add" onclick="add()"/>
-<input type="submit" id="rmBtn" value="Remove" onclick="rmv()"/>
+  <!-- Bootstrap -->
+  <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+<style>
+
+h1 {
+  font-family: "Arial"
+  color: orange;
+}
+
+p {
+  font-family: "Arial";
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div class="jumbotron">
+    <h1 id="title">Shopping List</h1>
+    <p id="list" class="lead"></p>
+    <input type="text" id="myTextField"/>
+    <button type="button" class="btn btn-success" onclick="add()">Add</button>
+    <button type="button" class="btn btn-danger" onclick="rmv()">Remove</button>
+  </div>
+</div>
+</body>
 
 <script>
 function add(){
@@ -15,8 +49,9 @@ function add(){
    return;
    }
    
-   var title = document.getElementById('title');
-   title.innerHTML = title.innerHTML + "<br>" + myNewTitle;
+   var list = document.getElementById('list');
+   list.innerHTML = list.innerHTML + "<br>" + myNewTitle;
+   myNewTitle.innerHTML = "";
     return;
 }
 
@@ -26,17 +61,19 @@ function rmv(){
         alert("Please enter an item to be removed .");
         return;
     }
-    var title = document.getElementById('title');
-    var title_s = title.innerHTML.split('<br>');
+    var list = document.getElementById('list');
+    var title_s = list.innerHTML.split('<br>');
     for(var i = 1; i < title_s.length; ++i){
         if (title_s[i] == rm_item){
             title_s[i] = ' ';
         }
     }
-    title.innerHTML = 'Shopping List\n'
+    list.innerHTML = ''
     for (var i = 1; i < title_s.length; ++i){
-        if (title_s[i] != ' ') title.innerHTML = title.innerHTML + '<br>' + title_s[i];
+        if (title_s[i] != ' ') list.innerHTML = list.innerHTML + '<br>' + title_s[i];
     }
+
+    rm_item.innerHTML = "";
 }
 
 </script>
